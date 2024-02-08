@@ -6,9 +6,14 @@ Prerequisites Android Studio Android Emulator or Device
 
 Steps:
 
-Open the project in android studio
-Once project is loaded in android studio, connect a physical device or start a device using emulator
-Click on Run in Android studio to run the app in one of the above devices
-BingPingPong App is ready to use
-Click on PingTool IP which will take user to next page with Input and a submit button
-By giving the desired IP User can see the results for the particular IP in next page
+1.Open the project in android studio
+
+2.Once project is loaded in android studio, connect a physical device or start a device using emulator
+
+3.Click on Run in Android studio to run the app in one of the above devices
+
+4.BingPingPong App is ready to use
+
+5.Click on PingTool IP which will take user to next page with Input and a submit button
+
+6.By giving the desired IP User can see the results for the particular IP in next page
