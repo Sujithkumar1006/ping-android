@@ -60,7 +60,7 @@ class InputIPActivity : AppCompatActivity() {
 
     private fun pingIpAddress(ipAddress: String): PingResult {
         return try {
-            val command = "ping -c 4 $ipAddress"
+            val command = "ping -c 5 $ipAddress"
             println("Command is $command")
             val process = Runtime.getRuntime().exec(command)
             val inputStream = process.inputStream

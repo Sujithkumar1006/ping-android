@@ -31,7 +31,7 @@ class ResultActivity : AppCompatActivity() {
 
     private fun renderUI(output: PingResult) {
         val headingText = findViewById<TextView>(R.id.resultTitle)
-        headingText.text = "Ping Results for : ${output.ipAddress.toString()}"
+        headingText.text = "Ping Results for: ${output.ipAddress.toString()}"
         val resultText = findViewById<TextView>(R.id.pingResultTexts)
         resultText.text = output.result.toString()
     }

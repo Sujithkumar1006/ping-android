@@ -11,4 +11,4 @@ Once project is loaded in android studio, connect a physical device or start a d
 Click on Run in Android studio to run the app in one of the above devices
 BingPingPong App is ready to use
 Click on PingTool IP which will take user to next page with Input and a submit button
-By giving the desired IP User can see the resuls for the particular IP in next page
+By giving the desired IP User can see the results for the particular IP in next page
