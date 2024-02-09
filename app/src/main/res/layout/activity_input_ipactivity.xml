@@ -8,13 +8,24 @@
     tools:context=".InputIPActivity">
 
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
+
     <EditText
         android:id="@+id/inputIP"
         android:layout_width="330dp"
         android:layout_height="61dp"
-        android:layout_marginTop="244dp"
-        android:inputType="text"
+        android:layout_marginTop="256dp"
         android:hint="Enter IP Address"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"

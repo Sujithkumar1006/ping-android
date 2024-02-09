@@ -3,8 +3,10 @@ package com.example.bingpingpong
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Toast
 import kotlinx.coroutines.*
 import java.io.Serializable
@@ -27,7 +29,7 @@ class InputIPActivity : AppCompatActivity() {
 
         val submitButton = findViewById<Button>(R.id.buttonPingClick)
         submitButton.setOnClickListener {
-//            submitButton.isClickable = false
+            submitButton.isClickable = false
             onPingSubmit()
         }
 
@@ -41,12 +43,15 @@ class InputIPActivity : AppCompatActivity() {
             return
         }
         // Start a coroutine in the main thread
+        val spinner = findViewById<ProgressBar>(R.id.progressBar)
+        spinner.visibility = View.VISIBLE
         CoroutineScope(Dispatchers.Main).launch {
             // Switch to the background thread
             val result = withContext(Dispatchers.IO) {
                 pingIpAddress(ipAddress.text.toString())
             }
             println("Result is $result")
+            spinner.visibility = View.GONE
             onTaskCompleted(result)
         }
     }
@@ -62,19 +67,18 @@ class InputIPActivity : AppCompatActivity() {
         return try {
             val command = "ping -c 5 $ipAddress"
             println("Command is $command")
-            val process = Runtime.getRuntime().exec(command)
-            val inputStream = process.inputStream
-            val bufferedReader = inputStream.bufferedReader()
-            val result = StringBuilder()
-            var line: String?
-            while (bufferedReader.readLine().also { line = it } != null) {
-                result.append(line).append("\n")
+            val execProcess = Runtime.getRuntime().exec(command)
+            val streamInput = execProcess.inputStream
+            val bufferedReader = streamInput.bufferedReader()
+            val response = StringBuilder()
+            var endLine: String?
+            while (bufferedReader.readLine().also { endLine = it } != null) {
+                response.append(endLine).append("\n")
             }
-            // Wait for the process to complete
-            val message = process.waitFor()
+            val message = execProcess.waitFor()
             println("Message is $message")
-            println("Result is ${result.capacity()}")
-            return PingResult(true,  result, ipAddress)
+            println("Result is ${response.capacity()}")
+            return PingResult(true,  response, ipAddress)
         } catch (e: Exception) {
             PingResult(false, StringBuilder(e.message.toString()), ipAddress)
         }
